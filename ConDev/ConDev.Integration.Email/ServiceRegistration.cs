@@ -9,7 +9,7 @@ namespace ConDev.Integration.Email
     {
         public static void RegisterEmailIntegration(this ContainerBuilder services)
         {
-            services.RegisterType<SendEmailIntegration>().As<IOutputIntegration>().SingleInstance();
+            services.RegisterType<SendEmailIntegration>().As<IOutputIntegration>();
         }
     }
 }

@@ -9,7 +9,9 @@ namespace ConDev.Logic
     {
         public static void RegisterLogic(this ContainerBuilder services)
         {
-            services.RegisterType<CreateUserCommand>().As<ICreateUserCommand>().InstancePerTenant();
+            services.RegisterType<CreateUserCommand>().Named<ICreateUserCommand>("inner");
+            services.RegisterDecorator<ICreateUserCommand>((c, z) => new CreateUserCommandMaatwerk(z), fromKey: "inner");
+
             services.RegisterType<SlowStartup>().AsSelf();
         }
     }

@@ -9,7 +9,7 @@ namespace ConDev.Integration.Slack
     {
         public static void RegisterSlackIntegration(this ContainerBuilder services)
         {
-            services.RegisterType<PostToSlackChannelIntegration>().As<IOutputIntegration>().SingleInstance();
+            services.RegisterType<PostToSlackChannelIntegration>().As<IOutputIntegration>();
         }
     }
 }

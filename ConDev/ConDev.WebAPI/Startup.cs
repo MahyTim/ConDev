@@ -42,13 +42,13 @@ namespace ConDev.WebAPI
             builder.RegisterSlackIntegration();
             builder.RegisterEmailIntegration();
 
-            MultitenantContainer = new MultitenantContainer(new RequestParameterTenantStrategy(() => new HttpContextAccessor()), builder.Build());
-            MultitenantContainer.RegisterDataAccess();
+            //MultitenantContainer = new MultitenantContainer(new RequestParameterTenantStrategy(() => new HttpContextAccessor()), builder.Build());
+            //MultitenantContainer.RegisterDataAccess();
 
-            return new AutofacServiceProvider(MultitenantContainer);
+            return new AutofacServiceProvider(builder.Build());
         }
 
-        public static MultitenantContainer MultitenantContainer { get; set; }
+        //public static MultitenantContainer MultitenantContainer { get; set; }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
