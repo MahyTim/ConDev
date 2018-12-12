@@ -7,15 +7,24 @@ namespace ConDev.Logic.CreateUser
     {
         private IUserRepository _userRepository;
         private readonly IEnumerable<IOutputIntegration> _integrations;
+        private readonly Lazy<SlowStartup> _slowStartup;
 
-        public CreateUserCommand(IUserRepository userRepository,IEnumerable<IOutputIntegration> integrations)
+        public CreateUserCommand(IUserRepository userRepository,
+            IEnumerable<IOutputIntegration> integrations,
+            Lazy<SlowStartup> slowStartup)
         {
             _userRepository = userRepository;
             _integrations = integrations;
+            _slowStartup = slowStartup;
         }
 
         public CreateUserResult TryCreate(ICreateUserCommandInput input)
         {
+            if (input.Email.EndsWith("test.be", StringComparison.OrdinalIgnoreCase))
+            {
+                _slowStartup.Value.Execute(input.Email);
+            }
+
             if (_userRepository.EmailExists(input.Email))
                 return CreateUserResult.Failed(CreateUserResult.ValidationFailedErrors.FailedDuplicateEmail);
 
