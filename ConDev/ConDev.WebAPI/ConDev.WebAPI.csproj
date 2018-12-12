@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConDev.DataAccess\ConDev.DataAccess.csproj" />
+    <ProjectReference Include="..\ConDev.Integration.Email\ConDev.Integration.Email.csproj" />
+    <ProjectReference Include="..\ConDev.Integration.Slack\ConDev.Integration.Slack.csproj" />
+    <ProjectReference Include="..\ConDev.Logic\ConDev.Logic.csproj" />
+  </ItemGroup>
+
+</Project>
