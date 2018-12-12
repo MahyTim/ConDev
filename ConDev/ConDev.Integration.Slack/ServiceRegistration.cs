@@ -1,4 +1,5 @@
-﻿using ConDev.Logic;
+﻿using Autofac;
+using ConDev.Logic;
 using ConDev.Logic.CreateUser;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,9 +7,9 @@ namespace ConDev.Integration.Slack
 {
     public static class ServiceRegistration
     {
-        public static void RegisterSlackIntegration(this IServiceCollection services)
+        public static void RegisterSlackIntegration(this ContainerBuilder services)
         {
-            services.AddSingleton<IOutputIntegration, PostToSlackChannelIntegration>();
+            services.RegisterType<PostToSlackChannelIntegration>().As<IOutputIntegration>().SingleInstance();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ConDev.Logic;
+﻿using Autofac;
+using ConDev.Logic;
 using ConDev.Logic.CreateUser;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,9 +7,9 @@ namespace ConDev.Integration.Email
 {
     public static class ServiceRegistration
     {
-        public static void RegisterEmailIntegration(this IServiceCollection services)
+        public static void RegisterEmailIntegration(this ContainerBuilder services)
         {
-            services.AddSingleton<IOutputIntegration, SendEmailIntegration>();
+            services.RegisterType<SendEmailIntegration>().As<IOutputIntegration>().SingleInstance();
         }
     }
 }

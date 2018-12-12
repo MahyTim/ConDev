@@ -1,13 +1,15 @@
-﻿using ConDev.Logic.CreateUser;
+﻿using Autofac;
+using Autofac.Multitenant;
+using ConDev.Logic.CreateUser;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ConDev.Logic
 {
     public static class ServiceRegistration
     {
-        public static void RegisterLogic(this IServiceCollection services)
+        public static void RegisterLogic(this ContainerBuilder services)
         {
-            services.AddSingleton<ICreateUserCommand, CreateUserCommand>();
+            services.RegisterType<CreateUserCommand>().As<ICreateUserCommand>().InstancePerTenant();
         }
     }
 }
