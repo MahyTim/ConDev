@@ -1,5 +1,6 @@
 ﻿using ConDev.Logic;
 using ConDev.Logic.CreateUser;
+using ConDev.Logic.Integrations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ConDev.Integration.Slack

@@ -1,4 +1,5 @@
 ﻿using System;
+using ConDev.Logic.Integrations;
 
 namespace ConDev.Logic
 {

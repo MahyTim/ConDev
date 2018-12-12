@@ -1,5 +1,6 @@
 ﻿using System;
 using ConDev.Logic;
+using ConDev.Logic.Integrations;
 
 namespace ConDev.Integration.Email
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConDev.Logic.Integrations;
 
 namespace ConDev.Logic.CreateUser
 {
